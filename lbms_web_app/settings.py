@@ -31,7 +31,7 @@ SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-CSRF_TRUSTED_ORIGINS = ["navlbms-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://navlbms-production.up.railway.app"]
 
 ALLOWED_HOSTS = ['navlbms-production.up.railway.app' , '127.0.0.1']
 
