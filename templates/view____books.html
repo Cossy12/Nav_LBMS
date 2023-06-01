@@ -1,0 +1,38 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="">
+    <div class="order_nav">
+        <div class="orders_available">
+            <div class="order_title">
+                <h3>Books</h3>
+            </div>
+    <table class="" id="example">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>ISBN Number</th>
+                <th>Category</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td>{{book.name}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.category}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+{% endblock %}

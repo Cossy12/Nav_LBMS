@@ -1,0 +1,56 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+
+    <div class="order_nav">
+        <div class="orders_available">
+            <div class="order_title">
+                <h3>Issued Books</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Student</th>
+                        <th>Student ID</th>
+                        <th>Book Name</th>
+                        <th>ISBN</th>
+                        <th>Issued Date</th>
+                        <th>Expiry Date</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+    <tbody>
+        {% for i in details %}
+        {% if i.8 == False %}
+
+        <td><button class="status completed">   <a href="/return_book/{{i.7}}">Book Return</a>   </button></td>
+
+
+        {% else  %}
+        <td><button class="status completed">   <a> Returned</a>   </button></td>
+
+        {% endif %}
+
+        <tr class="text-center">
+            <td>{{forloop.counter}}.</td>
+            <td>{{i.0}}</td>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{i.4}}</td>
+            <td>{{i.5}}</td>
+            <td>ksh {{i.6}}</td>
+            <td> {{i.8}}</td>
+
+
+        </tr>
+      {% endfor %}
+  </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

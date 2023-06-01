@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+
+
+    <div class="order_nav">
+        <div class="orders_available">
+            <div class="order_title">
+                <h3>Books</h3>
+            </div>
+            <table id="example">
+                <thead>
+                    <tr class="text-center">
+                        <th>Sr.No</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>price</th>
+
+                    </tr>
+                </thead>
+    <tbody>
+
+      {% for i in li1 %}
+      <tr class="text-center">
+          <td>{{forloop.counter}}.</td>
+          <td>{{i.0}}</td>
+          <td>{{i.1}}</td>
+          <td>{{i.2}}</td>
+          <td>{{i.3}}</td>
+          <td>{{i.4}}</td>
+          {% endfor %}
+<td>{{total}}</td>
+      </tr>
+  </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

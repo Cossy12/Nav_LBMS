@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <main>
+
+
+      <div class="form signIn-form" style="height: 1300px; margin-top: -20%;">
+        <h2>Add a Book</h2>
+        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+            {{ form.media }}
+            {{ form.as_p }}
+      
+          <button type="submit">update Book</button>
+      
+        </form>
+      
+      </div>
+    </main>
+
+  </div>
+
+</form>
+<script>
+  
+  {% if alert %}
+      Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Book update succesfully ',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  {% endif %}
+</script>
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}

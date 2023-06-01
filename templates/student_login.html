@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <main>
+      <div class="form signUp-form">
+        <h2>Student Login</h2>
+        <form method="POST"> {% csrf_token %}
+
+            <label for="username">Username</label>
+            <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+
+            <label for="password">Password</label>
+            <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+        
+
+           <button type="submit">Sign in</button>
+         </form>
+      </div>
+
+
+    </main>
+
+  </div>
+
+  <script>
+  
+    {% if alert %}
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'invalid credentials Try again ',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    {% else %}
+    // Swal.fire({
+    //   position: 'top-end',
+    //   icon: 'success',
+    //   title: 'succesfull logged in ',
+    //   showConfirmButton: false,
+    //   timer: 1500
+    // })
+
+
+    {% endif %}
+  </script>
+{% endblock %}
+{% block js %}
+<script>
+
+</script>
+{% endblock %}

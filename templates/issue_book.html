@@ -1,0 +1,52 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<div class="container">
+    <main>
+      <div class="form signUp-form">
+        <h2> Issue a Book</h2>
+        <form method="POST"> {% csrf_token %}
+
+
+
+           {% for i in form %}
+           <div class="form-group">
+               <br>
+               <label for="username">{{ i.label_tag }}</label>
+             <div class="col-xs-8 mt-2">
+             {{ i }}
+              </div>
+           </div>
+           {% endfor %}
+           <button style="margin-top: 20%;" type="submit">Issue Book</button>
+
+         </form>
+      </div>
+
+
+    </main>
+
+  </div>
+
+</form>
+<script>
+  
+  {% if alert %}
+      Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Book issued ',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  {% endif %}
+</script>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
+

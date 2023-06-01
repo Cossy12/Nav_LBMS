@@ -1,0 +1,65 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <main>
+
+
+      <div class="form signIn-form" style="height: 1300px; margin-top: -20%;">
+        <h2>Add a Book</h2>
+        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+      
+
+
+                    <label><i style="font-weight: bold;">Book Name</i></label>
+                    <input type="text" class="form-control mt-2" name="name" placeholder="Enter name of the Book" required>
+
+        
+
+                    <label><i style="font-weight: bold;">Author Name</i></label>
+                    <input type="text" class="form-control mt-2" name="author" placeholder="Enter name of the Author" required>
+
+        
+
+                    <label><i style="font-weight: bold;">ISBN Number</i></label>
+                    <input type="number" class="form-control mt-2" name="isbn" placeholder="Enter ISBN number of the book" required>
+
+        
+
+                    <label><i style="font-weight: bold;">Category</i></label>
+                    <input type="text" class="form-control mt-2" name="category" placeholder="Enter price the book" required>
+
+                    <label><i style="font-weight: bold;">Price</i></label>
+                    <input type="number" class="form-control mt-2" name="price" placeholder="Enter price of the book" required>
+
+      
+          <button type="submit">Add Book</button>
+      
+        </form>
+      
+      </div>
+    </main>
+
+  </div>
+
+</form>
+<script>
+  
+  {% if alert %}
+      Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Book is added successfully. ',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  {% endif %}
+</script>
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}
