@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 
+from decouple import config
+
+import dj_database_url
+import environ
+from ctypes import cast
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -19,14 +27,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+xgmwg2u@=-%6bz9*e-kx8$n2$dw&lpkc*j#)=kr*z!jk*6z@a'
-
+SECRET_KEY =config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+# CSRF_TRUSTED_ORIGINS = [""]
 
+ALLOWED_HOSTS = ['' , '127.0.0.1']
 
 # Application definition
 
@@ -80,14 +87,24 @@ WSGI_APPLICATION = 'lbms_web_app.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# if config('MODE') == 'dev':
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'LBMS',
+#         'USER':'postgres',
+#         'PASSWORD':'0793782924',
+#         'HOST':'localhost',
+#     }
+# }
+
+# elif config('MODE') == 'prod':
+DATABASE_URL = config("DATABASE_URL")
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'LBMS',
-        'USER':'postgres',
-        'PASSWORD':'0793782924',
-        'HOST':'localhost',
-    }
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 
 
